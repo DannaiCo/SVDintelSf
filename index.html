@@ -14,12 +14,11 @@
             margin: 0;
             width: 100vw;
             height: 100vh;
-            overflow: hidden; /* Evita desplazamientos */
-            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #f8d7da; /* Color de fondo de seguridad */
+            background: #f8d7da;
         }
 
         #fondo {
@@ -34,13 +33,15 @@
 
         #countdown {
             font-family: 'Eminor Bold', sans-serif;
-    font-weight: bold;
-    font-size: 4.2vw;
-    color: #63323d;
-    position: absolute;
-    top: 21.3vh;  /* Ajusta este valor según la ubicación ideal */
-    left: 71vw; /* Ajusta este valor según la ubicación ideal */
-    transform: translate(-50%, -50%); /* Centra mejor el número */
+            font-weight: bold;
+            font-size: 82px; /* Ajusta el tamaño del número */
+            color: #63323d;
+            position: absolute;
+            top: 193px; /* Ajusta la posición vertical */
+            left: 1470px; /* Ajusta la posición horizontal */
+            transform: translate(-50%, -50%); /* Centra el número en su posición */
+            z-index: 2; /* Asegura que esté encima del fondo */
+        }
     </style>
 </head>
 <body>
@@ -57,12 +58,12 @@
                 const diasRestantes = Math.ceil(diferencia / (1000 * 60 * 60 * 24));
                 document.getElementById("countdown").innerText = diasRestantes;
             } else {
-                document.getElementById("countdown").innerText = "0"; // Cuando llegue la fecha
+                document.getElementById("countdown").innerText = "0";
             }
         }
 
         actualizarCuentaRegresiva(); // Ejecutar al cargar
-        setInterval(actualizarCuentaRegresiva, 1000 * 60 * 60); // Actualizar cada hora
+        setInterval(actualizarCuentaRegresiva, 1000 * 60 * 60);
     </script>
 </body>
 </html>
