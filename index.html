@@ -11,17 +11,17 @@
         }
 
         body {
-    margin: 0;
-    width: 1920px;
-    height: 320px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f8d7da;
-    transform-origin: top left;
-    transform: scale(0.4); /* Ajustar si la pantalla sigue haciendo zoom */
-}
+            margin: 0;
+            width: 1920px;
+            height: 320px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8d7da;
+            transform-origin: top left;
+            transform: scale(1); /* Ajuste inicial */
+        }
 
         #fondo {
             position: absolute;
@@ -40,7 +40,7 @@
             color: #63323d;
             position: absolute;
             top: 193px; /* Ajusta la posición vertical */
-            left: 1480px; /* Ajusta la posición horizontal */
+            left: 1470px; /* Ajusta la posición horizontal */
             transform: translate(-50%, -50%); /* Centra el número en su posición */
             z-index: 2; /* Asegura que esté encima del fondo */
         }
@@ -51,6 +51,21 @@
     <div id="countdown"></div>
 
     <script>
+        // Función para ajustar la escala automáticamente según el tamaño de la pantalla
+        function ajustarEscala() {
+            const escalaX = window.innerWidth / 1920;
+            const escalaY = window.innerHeight / 320;
+            const escalaFinal = Math.min(escalaX, escalaY); // Mantiene proporciones
+
+            document.body.style.transform = `scale(${escalaFinal})`;
+            document.body.style.transformOrigin = "top left";
+        }
+
+        // Llamar a la función de ajuste de escala al cargar y en cambios de tamaño
+        ajustarEscala();
+        window.addEventListener("resize", ajustarEscala);
+
+        // Función para actualizar la cuenta regresiva
         function actualizarCuentaRegresiva() {
             const fechaObjetivo = new Date("Feb 14, 2025 00:00:00").getTime();
             const ahora = new Date().getTime();
@@ -64,7 +79,8 @@
             }
         }
 
-        actualizarCuentaRegresiva(); // Ejecutar al cargar
+        // Ejecutar la cuenta regresiva al cargar y actualizar cada hora
+        actualizarCuentaRegresiva();
         setInterval(actualizarCuentaRegresiva, 1000 * 60 * 60);
     </script>
 </body>
